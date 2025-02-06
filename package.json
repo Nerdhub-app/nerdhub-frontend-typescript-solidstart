@@ -7,12 +7,13 @@
     "start": "vinxi start"
   },
   "dependencies": {
+    "@solidjs/meta": "^0.29.4",
     "@solidjs/router": "^0.15.0",
     "@solidjs/start": "^1.0.11",
     "flowbite": "^3.0.0",
     "solid-js": "^1.9.2",
     "solid-motionone": "^1.0.3",
-    "vinxi": "^0.4.3"
+    "vinxi": "^0.5.1"
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^5.2.2",
