@@ -93,7 +93,10 @@ export const SiteNavbar: ParentComponent = () => {
               </svg>
             </button>
             {/* Logo */}
-            <A href="/" class="inline-block">
+            <A
+              href="/"
+              class="absolute left-1/2 inline-block -translate-x-1/2 md:static md:translate-x-0"
+            >
               <SiteLogo width={133} theme={themeColor()} />
             </A>
           </div>

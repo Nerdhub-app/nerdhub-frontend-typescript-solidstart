@@ -80,6 +80,7 @@ const SiteSidebar: Component = () => {
       {/* Overlay */}
       <Overlay
         show={sidebarState.isOpen}
+        portal={false}
         classList={{ "lg:hidden": true }}
         onClick={closeSidebar}
       />
