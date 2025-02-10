@@ -57,7 +57,7 @@ export const SiteNavbar: ParentComponent = () => {
   return (
     <header
       ref={navbar}
-      class="sticky top-0 left-0 border-b border-solid duration-500"
+      class="sticky top-0 left-0 z-20 border-b border-solid duration-500"
       classList={{
         "bg-paper border-divider": !isTransparent(),
         "bg-paper/0 border-transparent": isTransparent(),

@@ -29,7 +29,7 @@ const SiteSidebar: Component = () => {
       {/* Wrapper */}
       <section
         aria-labelledby="site-sidebar-title"
-        class="bg-paper format dark:format-invert format-a border-divider solid fixed top-0 left-0 z-20 h-screen w-72 border border-r py-4 duration-500 lg:hidden"
+        class="bg-paper format dark:format-invert format-a border-divider solid fixed top-0 left-0 z-20 h-screen w-72 border border-t-0 border-r border-b-0 border-l-0 py-4 duration-500 lg:hidden"
         classList={{
           "translate-x-0 opacity-full": sidebarState.isOpen,
           "-translate-x-full opacity-0": !sidebarState.isOpen,
