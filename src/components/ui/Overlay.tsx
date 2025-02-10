@@ -17,11 +17,22 @@ export type OverlayProps = ParentProps<{
   show?: boolean;
   class?: JSX.HTMLAttributes<HTMLDivElement>["class"];
   classList?: JSX.HTMLAttributes<HTMLDivElement>["classList"];
+  portal?: boolean;
   onClick?: () => void;
 }>;
 
+const PortalWrapper: ParentComponent<{ portal: boolean }> = (props) => {
+  const _children = children(() => props.children);
+
+  return (
+    <Show when={props.portal} fallback={_children()}>
+      <Portal>{_children()}</Portal>
+    </Show>
+  );
+};
+
 const Overlay: ParentComponent<OverlayProps> = (_props) => {
-  const props = mergeProps({ show: true }, _props);
+  const props = mergeProps({ show: true, portal: true }, _props);
 
   const [show, setShow] = createSignal(false);
 
@@ -52,7 +63,7 @@ const Overlay: ParentComponent<OverlayProps> = (_props) => {
   }
 
   return (
-    <Portal>
+    <PortalWrapper portal={props.portal}>
       <Show when={show()}>
         <div
           class={className()}
@@ -63,7 +74,7 @@ const Overlay: ParentComponent<OverlayProps> = (_props) => {
           {_children()}
         </div>
       </Show>
-    </Portal>
+    </PortalWrapper>
   );
 };
 
