@@ -1,5 +1,5 @@
 import { A } from "@solidjs/router";
-import { For, ParentComponent, onMount } from "solid-js";
+import { For, ParentComponent, createSignal, onMount } from "solid-js";
 
 import { initTooltips } from "flowbite";
 
@@ -18,14 +18,36 @@ const links: Record<"href" | "label", string>[] = [
   { href: "/privacy-policy", label: "Privacy policy" },
 ];
 
-export const SiteNavbar: ParentComponent = (props) => {
+export const SiteNavbar: ParentComponent = () => {
   const [, { toggleSidebar }] = useSidebar();
 
   const [, { themeColor }] = useTheme();
 
+  const [isTransparent, setTransparent] = createSignal(true);
+  let navbar!: HTMLElement;
+  let navbarHeight!: number;
+
   // Initialize Flowbite
   onMount(() => {
     initTooltips();
+  });
+
+  // (Navbar background transition based on scroll and resize observer) setup
+  onMount(() => {
+    navbarHeight = navbar.getBoundingClientRect().height;
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > navbarHeight) {
+        isTransparent() && setTransparent(false);
+      } else {
+        !isTransparent() && setTransparent(true);
+      }
+    });
+
+    new ResizeObserver((entries) => {
+      for (const elt of entries) {
+        navbarHeight = elt.borderBoxSize[0].blockSize;
+      }
+    }).observe(navbar);
   });
 
   function handleHambugerClick() {
@@ -33,84 +55,93 @@ export const SiteNavbar: ParentComponent = (props) => {
   }
 
   return (
-    <header class="bg-paper flex h-(--app-navbar-height) items-center justify-between px-3">
-      <div class="flex items-center gap-x-10">
-        <div class="flex items-center gap-x-4">
-          {/* Hamburger */}
-          <button
-            type="button"
-            aria-haspopup="true"
-            aria-controls="#"
-            title="Navigation bar"
-            class="text-muted-ligh bg-highlight hover:bg-highlight-strong focus:ring-primary-50 dark:focus:ring-primary-100 text-muted-light hover:text-muted border-divider inline-flex h-10 w-10 items-center justify-center rounded-sm border border-solid p-2 text-sm outline-0 duration-300 focus:ring-4 lg:hidden"
-            onClick={handleHambugerClick}
-          >
-            <span class="sr-only">Open navigation bar</span>
-            <svg
-              class="h-5 w-5"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 17 14"
+    <header
+      ref={navbar}
+      class="sticky top-0 left-0 border-b border-solid duration-500"
+      classList={{
+        "bg-paper border-divider": !isTransparent(),
+        "bg-paper/0 border-transparent": isTransparent(),
+      }}
+    >
+      <div class="flex h-(--app-navbar-height) items-center justify-between px-3 lg:container lg:mx-auto">
+        <div class="flex items-center gap-x-10">
+          <div class="flex items-center gap-x-4">
+            {/* Hamburger */}
+            <button
+              type="button"
+              aria-haspopup="true"
+              aria-controls="#"
+              title="Navigation bar"
+              class="text-muted-ligh bg-highlight hover:bg-highlight-strong focus:ring-primary-50 dark:focus:ring-primary-100 text-muted-light hover:text-muted border-divider inline-flex h-10 w-10 items-center justify-center rounded-sm border border-solid p-2 text-sm outline-0 duration-300 focus:ring-4 lg:hidden"
+              onClick={handleHambugerClick}
             >
-              <path
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M1 1h15M1 7h15M1 13h15"
-              />
-            </svg>
-          </button>
-          {/* Logo */}
-          <A href="/" class="inline-block">
-            <SiteLogo width={133} theme={themeColor()} />
-          </A>
+              <span class="sr-only">Open navigation bar</span>
+              <svg
+                class="h-5 w-5"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 17 14"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M1 1h15M1 7h15M1 13h15"
+                />
+              </svg>
+            </button>
+            {/* Logo */}
+            <A href="/" class="inline-block">
+              <SiteLogo width={133} theme={themeColor()} />
+            </A>
+          </div>
+          {/* Navigation links */}
+          <nav aria-label="Navigation links" class="hidden lg:block">
+            <ul class="m-0 flex list-none gap-x-6 p-0">
+              <For each={links}>
+                {(link) => (
+                  <li class="m-0 p-0">
+                    <A
+                      href={link.href}
+                      class="text-base duration-300"
+                      inactiveClass="text-muted hover:text-clear"
+                      activeClass="text-clear"
+                    >
+                      {link.label}
+                    </A>
+                  </li>
+                )}
+              </For>
+            </ul>
+          </nav>
         </div>
-        {/* Navigation links */}
-        <nav aria-label="Navigation links" class="hidden lg:block">
-          <ul class="m-0 flex list-none gap-x-6 p-0">
-            <For each={links}>
-              {(link) => (
-                <li class="m-0 p-0">
-                  <A
-                    href={link.href}
-                    class="text-base duration-300"
-                    inactiveClass="text-muted hover:text-clear"
-                    activeClass="text-clear"
-                  >
-                    {link.label}
-                  </A>
-                </li>
-              )}
-            </For>
-          </ul>
-        </nav>
+        <div class="flex items-center">
+          {/* Theme toggle */}
+          <SiteThemeToggle />
+          {/* Divider */}
+          <div class="bg-divider mr-5 ml-3 hidden h-[1.75rem] w-[1px] md:block"></div>
+          {/* Authentication links */}
+          <nav aria-label="Authentication links" class="hidden items-center gap-x-4 md:flex">
+            <A
+              href="/auth/login"
+              class="text-base duration-300"
+              inactiveClass="text-muted hover:text-clear"
+              activeClass="text-clear"
+            >
+              Sign in
+            </A>
+            <A
+              href="/auth/signup"
+              class="bg-primary-400 hover:bg-primary-500 focus:ring-primary-100 dark:focus:ring-primary-100 rounded-lg px-5 py-2.5 text-base font-medium text-white duration-300 focus:ring-4 focus:outline-none"
+            >
+              Get started
+            </A>
+          </nav>
+        </div>
+        <SiteSidebar />
       </div>
-      <div class="flex items-center">
-        {/* Theme toggle */}
-        <SiteThemeToggle />
-        {/* Divider */}
-        <div class="bg-divider mr-5 ml-3 hidden h-[1.75rem] w-[1px] md:block"></div>
-        {/* Authentication links */}
-        <nav aria-label="Authentication links" class="hidden items-center gap-x-4 md:flex">
-          <A
-            href="/auth/login"
-            class="text-base duration-300"
-            inactiveClass="text-muted hover:text-clear"
-            activeClass="text-clear"
-          >
-            Sign in
-          </A>
-          <A
-            href="/auth/signup"
-            class="bg-primary-400 hover:bg-primary-500 focus:ring-primary-100 dark:focus:ring-primary-100 rounded-lg px-5 py-2.5 text-base font-medium text-white duration-300 focus:ring-4 focus:outline-none"
-          >
-            Get started
-          </A>
-        </nav>
-      </div>
-      <SiteSidebar />
     </header>
   );
 };

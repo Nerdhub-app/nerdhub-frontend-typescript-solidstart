@@ -1,3 +1,3 @@
-:root {
-  --app-navbar-height: 4.25rem;
+#app {
+  background-color: var(--color-paper);
 }

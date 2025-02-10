@@ -91,6 +91,11 @@ html[data-theme="dark"] {
 
 /* GLOBAL STYLES *****************************************/
 
+/* Navbar height */
+:root {
+  --app-navbar-height: 4.25rem;
+}
+
 body,
 .font-roboto {
   font-family: var(--font-roboto);
