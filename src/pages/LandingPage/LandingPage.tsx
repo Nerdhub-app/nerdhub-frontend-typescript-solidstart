@@ -1,3 +1,4 @@
+import LandingPageFeatures from "./LandingPageFeatures";
 import LandingPageHero from "./LandingPageHero";
 import SiteLayout from "~/layouts/SiteLayout";
 
@@ -6,6 +7,7 @@ export function LandingPage() {
     <SiteLayout>
       <main>
         <LandingPageHero />
+        <LandingPageFeatures />
       </main>
     </SiteLayout>
   );
