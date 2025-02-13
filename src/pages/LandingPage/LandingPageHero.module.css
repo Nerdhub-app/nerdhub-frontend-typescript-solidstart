@@ -1,0 +1,20 @@
+.background {
+  height: calc(100% + var(--app-navbar-height));
+  background-image: radial-gradient(50% 50% at bottom left, var(--color-primary-300), transparent),
+    radial-gradient(20vw at top right, var(--color-primary-300), transparent);
+  opacity: 0.4;
+  overflow: clip;
+}
+
+.spotlight {
+  width: max(100vw, 100vh);
+  height: min(20vw, 20vh);
+  position: absolute;
+  top: 5%;
+  left: 10%;
+  transform: translateX(-50%) translateY(-50%) rotateZ(25deg);
+  background-image: radial-gradient(50% 50% at center, var(--color-muted), transparent);
+  animation: show 3s ease-out 1s backwards;
+  filter: blur(10px);
+  opacity: 0.7;
+}

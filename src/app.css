@@ -1,5 +1,11 @@
 /* TailwindCSS setup *************************************/
 
+/* Container layout paddings */
+@utility container {
+  padding-inline: 1rem;
+  margin-inline: auto;
+}
+
 /* TailwindCSS primitives */
 @import "tailwindcss";
 
@@ -118,4 +124,10 @@ h6,
 
 button {
   cursor: pointer;
+}
+
+.gradient-text {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
