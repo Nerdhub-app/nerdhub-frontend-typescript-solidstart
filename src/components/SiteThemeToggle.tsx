@@ -80,7 +80,11 @@ const SiteThemeToggle: Component = () => {
   return (
     <>
       {/* Toggle button + tooltip */}
-      <div aria-haspopup="menu" data-dropdown-toggle="theme-dropdown-menu">
+      <div
+        aria-haspopup="menu"
+        data-dropdown-toggle="theme-dropdown-menu"
+        data-dropdown-placement="left"
+      >
         <button
           type="button"
           aria-haspopup="true"
@@ -95,7 +99,7 @@ const SiteThemeToggle: Component = () => {
         <div
           id="site-theme-toggle-tooltip"
           role="tooltip"
-          class="tooltip text-clear invisible absolute z-10 inline-block rounded-lg bg-gray-800 px-3 py-2 text-sm font-medium opacity-0 shadow-xs dark:bg-gray-200 dark:text-black"
+          class="tooltip invisible absolute z-10 inline-block rounded-lg bg-gray-800 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-xs dark:bg-gray-200 dark:text-black"
         >
           Toggle theme
           <div class="tooltip-arrow" data-popper-arrow></div>
