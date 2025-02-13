@@ -1,15 +1,16 @@
 import { A } from "@solidjs/router";
-import { For, ParentComponent, createSignal, onMount } from "solid-js";
+import { For, ParentComponent, createSignal, lazy, onMount } from "solid-js";
 
 import { initTooltips } from "flowbite";
 
 import "./SiteNavbar.css";
 
-import SiteSidebar from "./SiteSidebar";
 import SiteLogo from "~/components/SiteLogo";
 import SiteThemeToggle from "~/components/SiteThemeToggle";
 import { useSidebar } from "~/contexts/sidebar";
 import { useTheme } from "~/contexts/theme";
+
+const SiteSidebar = lazy(() => import("./SiteSidebar"));
 
 const links: Record<"href" | "label", string>[] = [
   { href: "/about", label: "About" },
@@ -63,10 +64,10 @@ export const SiteNavbar: ParentComponent = () => {
         "bg-paper/0 border-transparent": isTransparent(),
       }}
     >
-      <div class="flex h-(--app-navbar-height) items-center justify-between px-3 lg:container lg:mx-auto">
+      <div class="container flex h-(--app-navbar-height) items-center justify-between">
         <div class="flex items-center gap-x-10">
-          <div class="flex items-center gap-x-4">
-            {/* Hamburger */}
+          <div class="flex items-center gap-x-5">
+            {/* Hamburger toggle button */}
             <button
               type="button"
               aria-haspopup="true"
@@ -143,6 +144,7 @@ export const SiteNavbar: ParentComponent = () => {
             </A>
           </nav>
         </div>
+        {/* Sidebar */}
         <SiteSidebar />
       </div>
     </header>
