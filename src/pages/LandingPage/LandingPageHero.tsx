@@ -61,7 +61,7 @@ const LandingPageHero = () => {
       [
         illustrationWrapper,
         {
-          x: ["50%", 0],
+          x: ["25%", 0],
           opacity: [0, 1],
         },
         {
@@ -94,7 +94,7 @@ const LandingPageHero = () => {
     >
       <div class="lg:max-h- relative z-[2] container mx-auto flex h-full flex-col-reverse items-center justify-end px-5 lg:max-h-[35rem] lg:flex-row lg:justify-between">
         {/* Content */}
-        <div class="pb-10 text-center lg:w-full lg:pb-0 lg:text-left">
+        <div class="pb-16 text-center md:pb-18 lg:w-full lg:pb-0 lg:text-left">
           <h1
             id="hero-heading"
             class="text-clear mb-3 max-w-[22rem] text-4xl leading-[1.25] font-bold md:mb-5 md:max-w-[29.5rem] md:text-5xl xl:text-[3.25rem]"
