@@ -1,0 +1,13 @@
+{
+  "recommendations": [
+    "ms-vscode.vscode-typescript-next",
+    "aaron-bond.better-comments",
+    "oven.bun-vscode",
+    "dbaeumer.vscode-eslint",
+    "PKief.material-icon-theme",
+    "esbenp.prettier-vscode",
+    "solidjs-community.solid-snippets",
+    "bradlc.vscode-tailwindcss",
+    "jock.svg"
+  ]
+}
