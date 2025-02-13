@@ -26,7 +26,6 @@ export const SiteNavbar: ParentComponent = () => {
 
   const [isTransparent, setTransparent] = createSignal(true);
   let navbar!: HTMLElement;
-  let navbarHeight!: number;
 
   // Initialize Flowbite
   onMount(() => {
@@ -35,14 +34,18 @@ export const SiteNavbar: ParentComponent = () => {
 
   // (Navbar background transition based on scroll and resize observer) setup
   onMount(() => {
-    navbarHeight = navbar.getBoundingClientRect().height;
-    window.addEventListener("scroll", () => {
+    let navbarHeight = navbar.getBoundingClientRect().height;
+
+    function updateNavbarBackground() {
       if (window.scrollY > navbarHeight) {
         isTransparent() && setTransparent(false);
       } else {
         !isTransparent() && setTransparent(true);
       }
-    });
+    }
+
+    updateNavbarBackground();
+    window.addEventListener("scroll", updateNavbarBackground);
 
     new ResizeObserver((entries) => {
       for (const elt of entries) {
