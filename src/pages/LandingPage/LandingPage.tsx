@@ -1,3 +1,4 @@
+import LandingPageFAQ from "./LandingPageFAQ";
 import LandingPageFeatures from "./LandingPageFeatures";
 import LandingPageHero from "./LandingPageHero";
 import LandingPagePasskeys from "./LandingPagePasskeys";
@@ -10,6 +11,7 @@ export function LandingPage() {
         <LandingPageHero />
         <LandingPageFeatures />
         <LandingPagePasskeys />
+        <LandingPageFAQ />
       </main>
     </SiteLayout>
   );
