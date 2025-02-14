@@ -53,9 +53,9 @@ const LandingPageHero = () => {
           y: ["100%", 0],
         },
         {
-          duration: 0.5,
+          duration: 0.25,
           ease: "easeOut",
-          delay: stagger(0.25),
+          delay: stagger(0.1),
         },
       ],
       [
@@ -66,6 +66,7 @@ const LandingPageHero = () => {
         },
         {
           duration: 1,
+          delay: 0.5,
           ease: "easeOut",
         },
       ],

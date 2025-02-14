@@ -37,20 +37,35 @@ const LandingPageFeatures: Component = () => {
 
   onMount(() => {
     for (const elt of articlesEltsMap.values()) {
-      const stop = inView(elt, (elt) => {
-        animate(
-          elt,
-          {
-            y: ["50%", 0],
-            opacity: [0, 1],
-          },
-          {
-            duration: 0.5,
-            ease: "easeOut",
-          },
-        );
-        return () => stop();
-      });
+      animate(
+        elt,
+        {
+          y: "50%",
+          opacity: 0,
+        },
+        {
+          duration: 0,
+        },
+      );
+      inView(
+        elt,
+        (elt) => {
+          animate(
+            elt,
+            {
+              y: 0,
+              opacity: 1,
+            },
+            {
+              duration: 0.5,
+              ease: "easeOut",
+            },
+          );
+        },
+        {
+          amount: "all",
+        },
+      );
     }
   });
 
