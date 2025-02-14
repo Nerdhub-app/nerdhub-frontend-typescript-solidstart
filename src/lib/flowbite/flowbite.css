@@ -1,0 +1,96 @@
+/* TailwindCSS setup *************************************/
+
+/* Container layout paddings */
+@utility container {
+  padding-inline: 1rem;
+  margin-inline: auto;
+}
+
+/* TailwindCSS primitives */
+@import "tailwindcss";
+
+/* Flowbite plugin */
+@plugin "flowbite/plugin";
+@source "../node_modules/flowbite";
+@plugin "flowbite-typography";
+
+/* Dark mode variant */
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+/* Theme variables */
+@theme {
+  /* Typography */
+  --font-roboto: "Roboto", sans-serif;
+  --font-montserrat: "Montserrat", serif;
+
+  /* Primary color */
+  --color-primary-50: #fde3c1;
+  --color-primary-100: #fbd098;
+  --color-primary-200: #fabd6f;
+  --color-primary-300: #f8aa46;
+  --color-primary-400: #f7971d;
+  --color-primary-500: #e28208;
+  --color-primary-600: #b96a07;
+  --color-primary-700: #905305;
+  --color-primary-800: #673b04;
+  --color-primary-900: #3e2302;
+
+  /* Secondary color */
+  --color-secondary-50: #ffc0c1;
+  --color-secondary-100: #fe9597;
+  --color-secondary-200: #fe6b6e;
+  --color-secondary-300: #fe4144;
+  --color-secondary-400: #fe4144;
+  --color-secondary-500: #e80106;
+  --color-secondary-600: #be0105;
+  --color-secondary-700: #940104;
+  --color-secondary-800: #6a0103;
+  --color-secondary-900: #3f0002;
+
+  /* Surface & Paper colors */
+  --color-surface: #eee;
+  --color-paper: #fff;
+
+  /* Clear text color */
+  --color-clear: oklch(0.21 0.034 264.665);
+
+  /* Muted text color */
+  --color-muted: rgb(0 0 0 / 0.6);
+  --color-muted-light: rgb(0 0 0 / 0.4);
+
+  /* Item color */
+  --color-highlight: #ececec;
+  --color-highlight-strong: #dfdfdf;
+
+  /* Icon background color (gray color) */
+  --color-icon-bg: #d9d9d9;
+  --color-icon-bg-hover: #c8c8c8;
+
+  /* Divider color */
+  --color-divider: #e0e0e0;
+}
+
+/* Dark mode variant */
+html[data-theme="dark"] {
+  /* Surface & Paper colors */
+  --color-surface: #1f1f1f;
+  --color-paper: #3f3b3c;
+
+  /* Clear text color */
+  --color-clear: #fff;
+
+  /* Muted text color */
+  --color-muted: #c7c7c7;
+  --color-muted-light: #a5a5a5;
+
+  /* Item color */
+  --color-highlight: #464646;
+  --color-highlight-strong: #696969;
+
+  /* Icon background color (gray color) */
+  --color-icon-bg: #d9d9d9;
+  --color-icon-bg-hover: #c8c8c8;
+
+  /* Divider color */
+  --color-divider: #707070;
+}
