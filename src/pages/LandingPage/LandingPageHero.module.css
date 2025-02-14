@@ -6,7 +6,7 @@
 }
 
 .background {
-  height: calc(100% + var(--app-navbar-height));
+  height: calc(100% + var(--site-navbar-height));
   background-image: radial-gradient(50% 50% at bottom left, var(--color-primary-300), transparent),
     radial-gradient(20vw at top right, var(--color-primary-300), transparent);
   opacity: 0.4;

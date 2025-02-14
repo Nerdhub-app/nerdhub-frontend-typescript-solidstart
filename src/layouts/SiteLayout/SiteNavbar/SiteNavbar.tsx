@@ -67,7 +67,7 @@ export const SiteNavbar: ParentComponent = () => {
         "bg-paper/0 border-transparent": isTransparent(),
       }}
     >
-      <div class="container flex h-(--app-navbar-height) items-center justify-between">
+      <div class="container flex h-(--site-navbar-height) items-center justify-between">
         <div class="flex items-center gap-x-10">
           <div class="flex items-center gap-x-5">
             {/* Hamburger toggle button */}
