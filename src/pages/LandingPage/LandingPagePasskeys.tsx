@@ -99,7 +99,8 @@ const LandingPagePasskeys: Component = () => {
               screen lock. It's the easiest and most secure way to access your account.
             </p>
             <a
-              href="#"
+              href="https://www.passkeys.com/"
+              target="_blank"
               class="text-clear hover:text-primary-400 inline-flex items-center gap-x-2 duration-300"
             >
               <span>Learn more about Passkeys</span>
