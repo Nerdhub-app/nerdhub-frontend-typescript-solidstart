@@ -1,18 +1,15 @@
 import { A } from "@solidjs/router";
 import { Component } from "solid-js";
 
-import AppLogo from "~/components/SiteLogo";
-import { useTheme } from "~/contexts/theme";
+import SiteLogo from "~/components/SiteLogo";
 
 const SiteFooter: Component = () => {
-  const [, { themeColor }] = useTheme();
-
   return (
     <footer class="bg-[#000410]">
       <div class="container flex flex-col items-stretch justify-between gap-y-8 py-14 md:flex-row">
         <div class="md: flex flex-col items-center justify-between gap-y-4 md:items-start">
           <a href="/">
-            <AppLogo theme={themeColor()} width={124} />
+            <SiteLogo theme="dark" width={124} />
           </a>
           <p class="text-gray-400">© Nerdhub - All rights reserved</p>
         </div>
