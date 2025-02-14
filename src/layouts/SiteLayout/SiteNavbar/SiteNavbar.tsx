@@ -24,7 +24,7 @@ export const SiteNavbar: ParentComponent = () => {
 
   const [, { themeColor }] = useTheme();
 
-  const [isTransparent, setTransparent] = createSignal(true);
+  const [isTransparent, setTransparent] = createSignal(false);
   let navbar!: HTMLElement;
 
   // Initialize Flowbite
