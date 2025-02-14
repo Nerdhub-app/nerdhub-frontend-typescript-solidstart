@@ -55,6 +55,7 @@ const LandingPageFAQ: Component = () => {
 
   return (
     <section
+      id="faq"
       aria-labelledby="faq-heading"
       class="from-primary-400 to-secondary-700 bg-linear-to-br pt-20 pb-24"
     >
