@@ -4,7 +4,6 @@ import { FileRoutes } from "@solidjs/start/router";
 import { Show, Suspense } from "solid-js";
 
 import "./app.css";
-import "~/lib/flowbite/flowbite.css";
 
 import { isDevEnv } from "./helpers/runtime.helper";
 import { ThemeProvider } from "~/contexts/theme";

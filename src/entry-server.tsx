@@ -1,6 +1,8 @@
 // @refresh reload
 import { createHandler, StartServer } from "@solidjs/start/server";
 
+import "~/lib/flowbite/flowbite.css";
+
 export default createHandler(() => {
   return (
     <StartServer

@@ -1,3 +1,6 @@
+/* TailwindCSS and Flowbite */
+@import "./lib/flowbite/flowbite.css";
+
 /* GLOBAL STYLES *****************************************/
 
 /* Navbar height */
