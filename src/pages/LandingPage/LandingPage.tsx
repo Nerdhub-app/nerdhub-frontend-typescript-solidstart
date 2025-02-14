@@ -1,5 +1,6 @@
 import LandingPageFeatures from "./LandingPageFeatures";
 import LandingPageHero from "./LandingPageHero";
+import LandingPagePasskeys from "./LandingPagePasskeys";
 import SiteLayout from "~/layouts/SiteLayout";
 
 export function LandingPage() {
@@ -8,6 +9,7 @@ export function LandingPage() {
       <main>
         <LandingPageHero />
         <LandingPageFeatures />
+        <LandingPagePasskeys />
       </main>
     </SiteLayout>
   );
