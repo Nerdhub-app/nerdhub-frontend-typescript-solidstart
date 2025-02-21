@@ -7,9 +7,10 @@ import {
   AuthContextState,
   AuthContextValue,
 } from "./auth.context";
+import authStore from "./auth.store";
 
 export const AuthContextProvider: ParentComponent = (props) => {
-  const [state] = createStore<AuthContextState>(authContextDefaultState);
+  const [state] = authStore;
 
   const value: AuthContextValue = [
     state,
